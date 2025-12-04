@@ -10,7 +10,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({extended : true}))
-app.use('/' , router)
+app.use('/api/notes' , router)
 
 app.get('/'  , (req , res)=>{
     res.send({message : "This api is working totally fine"})
