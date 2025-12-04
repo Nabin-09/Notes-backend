@@ -1,7 +1,7 @@
 import Note from "../../models/noteModel";
 
 
-const getNoteById = async (req , res)=>{
+export const getNoteById = async (req , res)=>{
     try{
         const note = await Note.findById(req.params.id);
         if(!note){
