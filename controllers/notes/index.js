@@ -1,8 +1,8 @@
-import { createNote } from "./createNote";
-import { deleteNote } from "./deleteNote";
-import { updateNote } from "./updateNote";
-import { getNotes } from "./getNotes";
-import { getNoteById } from "./getNoteById";
+import { createNote } from "./createNote.js";
+import { deleteNote } from "./deleteNote.js";
+import { updateNote } from "./updateNote.js";
+import { getNotes } from "./getNotes.js";
+import { getNoteById } from "./getNoteById.js";
 
 
 export {
