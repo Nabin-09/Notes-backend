@@ -1,17 +1,18 @@
-import express from 'express';
+import express, { urlencoded } from 'express'
+import dotenv from 'dotenv'
+import connectDB from './config/db.js'
+
+dotenv.config();
+
+connectDB();
 
 const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({extended : true}))
 
-app.use(express.json())//configuring middleware to accept data as json
-app.use(express.urlencoded({extended : true})) //extended: true allows for nested objects
-app.get('/' , (req , res)=>{
-    res.send('<h1> Hello from Nabin</h1?')
-})
+const PORT = process.env.PORT || 3000
 
-const port = process.env.PORT || 3000;
-
-
-app.listen(port , ()=>{
-    console.log(`Serverr is running on port ${port}`)
+app.listen(PORT , ()=>{
+    console.log(`Server is running on ${PORT}`)
 })
