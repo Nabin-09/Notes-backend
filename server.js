@@ -2,7 +2,6 @@ import express, { urlencoded } from 'express'
 import dotenv from 'dotenv'
 import connectDB from './config/db.js'
 import router from './routes/noteRoutes.js';
-import chatRoutes from './routes/chatRoutes.js'
 
 import { logger } from './middleware/loggerMiddleware.js';
 import { notFound } from './middleware/errorMiddleware.js';
@@ -17,7 +16,6 @@ app.use(express.urlencoded({extended : true}))
 
 app.use(logger)
 app.use('/api/notes' , router)
-app.use('/api/chat' , chatRoutes)
 app.use(notFound);
 
 app.get('/'  , (req , res)=>{
