@@ -51,7 +51,7 @@ export const updateNoteTool = tool(
 )
 
 
-export const deleteNote = tool(
+export const deleteNoteTool = tool(
     async ({id})=>{
         try{
             await Note.findByIdAndDelete(id);
