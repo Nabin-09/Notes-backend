@@ -49,3 +49,22 @@ export const updateNoteTool = tool(
         })
     }
 )
+
+
+export const deleteNote = tool(
+    async ({id})=>{
+        try{
+            await Note.findByIdAndDelete(id);
+            return `Node ${id} deleted`
+        }catch(e){
+            return `Error deleting node , ${e}`
+        }
+    },
+    {
+        name : 'delete_node',
+        description : 'Deletes a node. Requires the Note ID',
+        schema : z.object({
+            id : z.string().describe('The database _id of the note'),
+        }),
+    }
+)
