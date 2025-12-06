@@ -16,7 +16,6 @@ app.use(express.urlencoded({extended : true}))
 
 app.use(logger)
 app.use('/api/notes' , router)
-
 app.use(notFound);
 
 app.get('/'  , (req , res)=>{
