@@ -22,6 +22,30 @@ export const createNoteTool = tool(
     },
     {
         name : 'create_note',
-        description : 'Creates a new Note'
+        description : 'Creates a new Note',
+        schema : z.object({
+            content : z.string().describe('The content of the note'),
+            important : z.boolean().optional().describe('Is this note important ?')
+        })
+    }
+)
+
+export const updateNoteTool = tool(
+    async ({id , content}) =>{
+        try {
+            const updated = await Note.findByIdAndUpdate(id , {content} , {new : true});
+            if(!updated) return 'Note not found';
+            return `Note updated to : ${updated.content}`
+        }catch(err){
+            return `Error updating the notes ${err}`
+        }
+    },
+    {
+        name : 'update_note',
+        description : 'Update contents of a Note, requires the note ID',
+        schema : z.object({
+            id : z.string().describe('The database _id of the note'),
+            content : z.string().describe('The new content text')
+        })
     }
 )
